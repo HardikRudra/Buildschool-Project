@@ -72,10 +72,10 @@ const handleChange = (event)=>{
 
 
   return (
-    <Container>
+    <Container  pb="40px" px="50px" mt="50px" borderRadius="25px" border="1px solid black">
     <Form action='' method='post' onSubmit={(event) => handleSubmit(event)}>
     <FormControl isRequired my="40px">
-          <FormLabel>Bill Name:</FormLabel>
+          <FormLabel >Bill Name:</FormLabel>
           <Input type="text" name="billname" placeholder='Enter Bill Name' onChange={(e) => handleChange(e)}/>
           
         </FormControl>
@@ -94,7 +94,7 @@ const handleChange = (event)=>{
 
         <FormControl isRequired mb="40px">
           <FormLabel>Proof:</FormLabel>
-          <Input type="file" name="proof" onChange={(e) => handleChange(e)} />
+          <Input border="0px" type="file" name="proof" onChange={(e) => handleChange(e)} />
           
         </FormControl>
         <Button type='submit'>Submit</Button>

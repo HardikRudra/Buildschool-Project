@@ -8,7 +8,7 @@ function RootLayout() {
     <Grid templateColumns="repeat(6,1fr)" bg="gray.50">
     <GridItem as="aside"
      colSpan={{base:6,lg:2,xl:1}}
-     bg="green.400"
+     bg="blue.400"
      minHeight={{lg:'100vh'}}
      >
     <Sidebar />

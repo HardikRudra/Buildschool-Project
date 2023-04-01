@@ -4,8 +4,8 @@ import {Container, Box, Heading, Text, Flex, Button, Spacer, HStack, GridItem,Li
 function Teamheading() {
   // get route check if its /saarang or /shaastra.
   return (
-    <Box bg="blue.100" h="60px">
-      <Text ml="20px" fontSize="25px">Saarang</Text>
+    <Box bg="blue.200" h="64px">
+      <Text ml="20px" fontSize="25px" pt="7px" fontFamily="Lato" >Saarang</Text>
     </Box>
   )
 }

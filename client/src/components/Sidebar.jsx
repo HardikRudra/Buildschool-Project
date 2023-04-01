@@ -20,7 +20,7 @@ function createTeamNames(group){
 function Sidebar() {
   return (
     <Box>
-        <Heading h="60px">My Teams</Heading>
+        <Heading h="60px" fontFamily="Lato" ml="10px" pt="7px" fontWeight="semibold">My Teams</Heading>
         {data1.map(createTeamNames)}
 
       

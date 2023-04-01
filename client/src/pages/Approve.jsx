@@ -4,7 +4,7 @@ import ManagerBills from '../components/ManagerBills';
 
 function Approve() {
   return (
-    <Box>
+    <Box >
       <ManagerBills />
     </Box>
   )

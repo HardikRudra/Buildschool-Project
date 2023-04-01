@@ -10,6 +10,7 @@ import {
     ModalCloseButton,
     useDisclosure,
   } from '@chakra-ui/react'
+  import ImageComponent from './ImageComponent'
   
 
 // function Billprop(props) {
@@ -27,6 +28,14 @@ import {
 
 
 
+  
+  
+
+
+
+
+
+
 
 
 
@@ -39,12 +48,14 @@ function CoordBillprop(props) {
 
 
 
+
+
     
     return (
       <>
-         <Card onClick={onOpen} my={2}>
+         <Card bg="#D6E6F2" onClick={onOpen} my={2}>
    
-   <CardHeader>{props.billname}</CardHeader>
+   <CardHeader fontFamily="Lato" fontSize="18px">{props.billname}</CardHeader>
 
  </Card>
   

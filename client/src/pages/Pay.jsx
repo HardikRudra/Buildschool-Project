@@ -5,7 +5,7 @@ import { Box,Tabs,Tab,TabList,TabPanels,TabPanel,Button } from '@chakra-ui/react
 function Pay() {
   return (
     <Box>
-      <Box h="630px" bg="red.100">
+      <Box h="630px">
    <Tabs >
   <TabList justifyContent={'space-around'}>
     <Tab w="150px">Pending</Tab>

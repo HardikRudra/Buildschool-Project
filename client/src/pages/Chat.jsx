@@ -34,7 +34,7 @@ function Chat({TEAM}) {
   // console.log(TEAM)
   return (
     <Box>
-      <Box h="630px" bg="red.100">
+      <Box h="630px" bg="white">
    <Tabs >
   <TabList justifyContent={'space-around'}>
 
@@ -43,9 +43,9 @@ function Chat({TEAM}) {
 
 ))} */}
 
-    <Tab w="150px">Queued</Tab>
-    <Tab w="150px">Pending</Tab>
-    <Tab w="150px">Done</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="Lato">Queued</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="Lato">Pending</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="Lato">Done</Tab>
   </TabList>
 
   <TabPanels>
@@ -61,7 +61,7 @@ function Chat({TEAM}) {
   </TabPanels>
 </Tabs>
   </Box>
-  <Link to="/addbill"><Button my={1} colorScheme="blue"   ml="67vw">Add Bill</Button></Link>
+  <Link to="/addbill"><Button  fontFamily="Lato" fontSize="17px" my={1} colorScheme="blue"   ml="67vw">Add Bill</Button></Link>
     </Box>
   
   );

@@ -7,12 +7,15 @@ const billRoutes = require('./routes/billRoutes');
 const Bills = require('./model/billModel');
 
 
+
 const app =express();
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth",userRoutes);
-app.use("/api", billRoutes)
+app.use("/api", billRoutes);
+
+
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser:true,
     //useUnifiedToplogy:true,
