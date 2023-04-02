@@ -12,6 +12,9 @@ module.exports.addbill = async(req,res,next) =>{
             itemname,
             amount,
             proof,
+            
+
+
           });
           return res.json({status:true,bill});
     }

@@ -21,11 +21,13 @@ const billSchema = new mongoose.Schema({
     unique: false,
   },
   proof: {
-    type:String,
+    type:Buffer,
     required: false,
     // unique: true,
   },
- 
+  status: {
+    type: String, default: "queued",
+  }
   },
 );
 

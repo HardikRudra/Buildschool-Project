@@ -18,7 +18,7 @@ import {
 
 
 
-function Chat({TEAM}) {
+function Chat({team}) {
   // const filterByStatus = (statusName) =>{
   //   bills.filter(item => item.status===statusName)
   // } 

@@ -16,7 +16,7 @@ import {Box, Heading} from '@chakra-ui/react'
 function createCoordBills(group) {
   return (
     <div>
-        <CoordBillprop  key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} />
+        <CoordBillprop  key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} status={group.status}/>
         ></CoordBillprop>
     </div>
   )

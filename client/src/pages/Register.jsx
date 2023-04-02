@@ -5,6 +5,16 @@ import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { registerRoute } from '../utils/APIRoutes';
+import logo from "../assets/Logo.png";
+
+function changeColor(e) {
+  e.target.style.backgroundColor ="#159895";
+}
+
+function restoreColor(e){
+  e.target.style.backgroundColor = "#769FCD";
+}
+
 function Register() {
     const navigate = useNavigate();
     const [values,setValues]=useState({
@@ -81,19 +91,33 @@ function Register() {
         setValues({ ...values, [event.target.name]: event.target.value });
 
     };
-  return (
-    <div>
-    <FormContainer>
+  
+return (
+    <div style={{
+      //backgroundColor:"black"
+    }}>
+    <FormContainer style={{
+      transform: 'translateY(9%)',
+      boxShadow: '2px 2px 5px #000000',
+      width: "60%",
+      margin: "auto",
+      borderRadius: "20px", 
+      backgroundColor: "#B9DFEA"
+     
+    }}>
     <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
             <img src="" />
-            <h1>SAAHaS</h1>
+            <img src={logo} alt="Logo" style={{
+              width: "40%"
+            }} />
           </div>
           <input
             type="text"
             placeholder="Firstname"
             name="firstname"
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleChange(e)} 
+            
           />
           <input
             type="text"
@@ -131,7 +155,16 @@ function Register() {
             name="confirmPassword"
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Register</button>
+          <button type="submit" onMouseOver={changeColor} onMouseLeave={restoreColor} style={{
+            backgroundColor:"#769FCD",
+            color: "white",
+            width: "20%",
+            margin: "auto",
+            paddingTop: "8px",
+            paddingBottom:"8px",
+            borderRadius: "12px",
+
+          }}>Register</button>
           <span>
             Already have an account ? <Link to="/login">Login.</Link>
           </span>
@@ -146,14 +179,28 @@ function Register() {
 const FormContainer = styled.div`
 display:flex;
 justify-content:center;
+
 form{
    border: "1px";
     display:flex;
     flex-direction:column;
     gap:1rem;
-    width:20%;
+    width:60%;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
     
 }
+
+input{
+  height: 50px;
+  box-shadow: 1px 1px 1px 2px black;
+  border-radius: 10px;
+  
+}
+
+
+
 `
 ;
 
