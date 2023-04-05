@@ -26,10 +26,16 @@ const billSchema = new mongoose.Schema({
     // unique: true,
   },
   status: {
-    type: String, default: "queued",
+    type: String,
+   
   }
   },
 );
+
+billSchema.pre('save',function(){
+  this.status = 'pending';
+})
+
 
 
 module.exports = mongoose.model("Bills", billSchema);

@@ -1,9 +1,10 @@
 import { Box,Tabs,Tab,TabList,TabPanels,TabPanel,Button } from '@chakra-ui/react';
 import { Container } from '@mui/system'
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
 import CoordBills from '../components/CoordBills';
+import axios from 'axios';
 import {
   Modal,
   ModalOverlay,
@@ -14,6 +15,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react'
+import CoordBillprop from '../components/CoordBillprop';
 
 
 
@@ -32,6 +34,19 @@ function Chat({team}) {
   // },[])
 
   // console.log(TEAM)
+
+
+  const [bills, setBills] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000')
+      .then(res => {
+        setBills(res.data);
+      })
+  }, []);
+
+
+
   return (
     <Box>
       <Box h="630px" bg="white">
@@ -53,10 +68,18 @@ function Chat({team}) {
      <CoordBills />
     </TabPanel>
     <TabPanel>
-    <CoordBills />
+    {bills.filter(bills => bills.status == "pending").map(group => (
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status}/>
+    ))
+  }
+    {/* <CoordBills /> */}
     </TabPanel>
     <TabPanel>
-    <CoordBills />
+    {bills.filter(bills => bills.status == "paid").map(group => (
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status}/>
+    ))
+  }
+    {/* <CoordBills /> */}
     </TabPanel>
   </TabPanels>
 </Tabs>
