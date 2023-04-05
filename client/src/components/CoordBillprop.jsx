@@ -45,7 +45,7 @@ import {
 
 function CoordBillprop(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    // const [bills, setBills] = useState([]);
+  //   const [bills, setBills] = useState([]);
 
   // useEffect(() => {
   //   axios.get('http://localhost:5000')
@@ -53,13 +53,47 @@ function CoordBillprop(props) {
   //       setBills(res.data);
   //     })
   // }, []);
-function updateStatus(id){
-  axios.put('http://localhost:5000/manager/approvebills/'+ id)
+
+
+async function updateStatustoPending(id){
+  // axios.put('http://localhost:5000/manager/approvebills/'+ id, {
+  //   body
+  // })
       // .then(res => {
       //    (res.data);
       // })
+
+      const res = await axios({
+        method: 'put',
+        url: 'http://localhost:5000/api/manager/approvebills/'+ id,
+        data: {
+            
+            newStatus: 'pending'
+        }
+    });
       
 }
+
+async function updateStatustoPaid(id){
+  // axios.put('http://localhost:5000/manager/approvebills/'+ id, {
+  //   body
+  // })
+      // .then(res => {
+      //    (res.data);
+      // })
+
+      const res = await axios({
+        method: 'put',
+        url: 'http://localhost:5000/api/manager/paybills/'+ id,
+        data: {
+            
+            newStatus: 'paid'
+        }
+    });
+      
+}
+
+
 
 
 
@@ -91,7 +125,7 @@ function updateStatus(id){
     
               <ModalFooter>
                 <Button colorScheme='blue' mr={3} onClick={()=>{
-                  updateStatus(props.id);
+                  updateStatustoPending(props.id);
                 }}>
                   Approve
                 </Button>
@@ -101,7 +135,50 @@ function updateStatus(id){
           </Modal>
         </>
       )
-    }
+  }
+  else if(window.location.href.indexOf("/manager/paybills")!==-1){
+    return (
+      <>
+         <Card bg="#D6E6F2" onClick={onOpen} my={2}>
+   
+   <CardHeader fontFamily="Lato" fontSize="18px">{props.billname}</CardHeader>
+
+ </Card>
+  
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>{props.billname}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+           
+               <div>Item Name : {props.itemname} </div> 
+                <div>Amount : {props.amount}</div> 
+               <div> Proof : {props.proof}</div> 
+               <div> Status : {props.status}</div> 
+            
+                 
+            </ModalBody>
+            
+  
+            <ModalFooter>
+              <Button colorScheme='blue' mr={3} onClick={()=>{
+                updateStatustoPaid(props.id);
+              }}>
+                Pay
+              </Button>
+            
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    )
+  }
+
+
+
+
+
     else{
       return (
         <>

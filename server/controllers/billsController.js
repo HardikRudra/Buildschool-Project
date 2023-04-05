@@ -3,12 +3,14 @@ const billModel = require("../model/billModel")
 
 
 module.exports.updateStatus = async(req,res) =>{
-    const {newStatus,id} = req.body;
+    const {newStatus} = req.body;
+    console.log(newStatus);
     const bill = await billModel.findByIdAndUpdate(req.params.id,{
-        status:pending,
-    })
+        status:newStatus,
+    });
 
-}
+};
+
 
 
 
