@@ -27,14 +27,12 @@ const billSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-   
+    default:'queued',
   }
   },
 );
 
-billSchema.pre('save',function(){
-  this.status = 'pending';
-})
+
 
 
 

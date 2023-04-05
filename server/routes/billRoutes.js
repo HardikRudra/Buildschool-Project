@@ -1,6 +1,10 @@
-
+const { updateStatus } = require("../controllers/billsController");
 const { addbill } = require("../controllers/billsController");
 const router = require("express").Router();
+
+
+
+
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
     cloud_name: "dtpp08tmi",
@@ -12,6 +16,7 @@ cloudinary.config({
 
 
 router.post("/addbill",addbill);
+router.put("/manager/approvebills/:id", updateStatus);
 
 
 module.exports = router;

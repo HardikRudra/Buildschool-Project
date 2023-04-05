@@ -14,12 +14,13 @@ function Approve() {
         setBills(res.data);
       })
   }, []);
+  console.log(bills);
 
 
   return (
     <Box >
       {bills.filter(bills => bills.status == "pending").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status}/>
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status} id={group._id}/>
     ))
   }
     </Box>

@@ -13,6 +13,7 @@ import {
   } from '@chakra-ui/react'
   import ImageComponent from './ImageComponent'
   import axios from 'axios'
+
   
 
 // function Billprop(props) {
@@ -44,15 +45,21 @@ import {
 
 function CoordBillprop(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [bills, setBills] = useState([]);
+    // const [bills, setBills] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:5000')
-      .then(res => {
-        setBills(res.data);
-      })
-  }, []);
-
+  // useEffect(() => {
+  //   axios.get('http://localhost:5000')
+  //     .then(res => {
+  //       setBills(res.data);
+  //     })
+  // }, []);
+function updateStatus(id){
+  axios.put('http://localhost:5000/manager/approvebills/'+ id)
+      // .then(res => {
+      //    (res.data);
+      // })
+      
+}
 
 
 
@@ -83,7 +90,9 @@ function CoordBillprop(props) {
               
     
               <ModalFooter>
-                <Button colorScheme='blue' mr={3} onClick={onClose}>
+                <Button colorScheme='blue' mr={3} onClick={()=>{
+                  updateStatus(props.id);
+                }}>
                   Approve
                 </Button>
               
