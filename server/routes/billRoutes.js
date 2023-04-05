@@ -17,6 +17,6 @@ cloudinary.config({
 
 router.post("/addbill",addbill);
 router.put("/manager/approvebills/:id", updateStatus);
-
+router.put("/manager/paybills/:id", updateStatus);
 
 module.exports = router;
