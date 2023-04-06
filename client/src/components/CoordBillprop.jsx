@@ -71,8 +71,20 @@ async function updateStatustoPending(id){
             newStatus: 'pending'
         }
     });
+    
+  
+
+
+
+
       
 }
+
+const handleRefresh = () => {
+  window.location.reload();
+};
+
+
 
 async function updateStatustoPaid(id){
   // axios.put('http://localhost:5000/manager/approvebills/'+ id, {
@@ -124,11 +136,15 @@ async function updateStatustoPaid(id){
               
     
               <ModalFooter>
-                <Button colorScheme='blue' mr={3} onClick={()=>{
-                  updateStatustoPending(props.id);
-                }}>
+              <Button colorScheme='blue'  mr={3} onClick={()=>{
+                  updateStatustoPending(props.id); 
+                  handleRefresh();
+                  }}>
                   Approve
                 </Button>
+
+
+      
               
               </ModalFooter>
             </ModalContent>
@@ -164,8 +180,9 @@ async function updateStatustoPaid(id){
             <ModalFooter>
               <Button colorScheme='blue' mr={3} onClick={()=>{
                 updateStatustoPaid(props.id);
+                handleRefresh();
               }}>
-                Pay
+                Done
               </Button>
             
             </ModalFooter>

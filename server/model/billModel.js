@@ -28,6 +28,10 @@ const billSchema = new mongoose.Schema({
   status: {
     type: String,
     default:'queued',
+  },
+  teamname: {
+    type:String,
+    //default:"Saarang",
   }
   },
 );

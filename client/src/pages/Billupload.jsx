@@ -52,7 +52,8 @@ function Billupload() {
     billname,
     itemname,
     amount,
-    proof
+    proof,
+    // teamname:"saarang",
   });
   if(data.status===true)
   {
@@ -61,6 +62,9 @@ function Billupload() {
   navigate("/");
     }
 };
+
+
+
 const handleChange = (event)=>{
   setValues({ ...values, [event.target.name]: event.target.value });
 
@@ -97,7 +101,7 @@ const handleChange = (event)=>{
           <Input border="0px" type="file" name="proof" onChange={(e) => handleChange(e)} />
           
         </FormControl>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' >Submit</Button>
 
     </Form>
     </Container>

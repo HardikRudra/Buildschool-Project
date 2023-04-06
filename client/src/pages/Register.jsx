@@ -26,6 +26,22 @@ function Register() {
         password:"",
         confirmPassword:"",
     });
+
+    // useEffect(() => {
+    //   if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+    //     navigate("/register");
+    //   }
+    // }, []);
+
+    const handleChange = (event) => {
+      setValues({ ...values, [event.target.name]: event.target.value });
+    };
+
+
+
+
+
+
     const toastOptions = {
         position: "bottom-right",
         autoClose: 8000,
@@ -66,7 +82,7 @@ function Register() {
     const handleSubmit = async (event)=>{
         event.preventDefault();
         if(handleValidation()){
-            console.log("in validation", registerRoute)
+            
             const { firstname,lastname,username,email,upiID,password } = values;
       const { data } = await axios.post(registerRoute,{
         firstname,
@@ -87,10 +103,7 @@ function Register() {
       navigate("/");
         }
     };
-    const handleChange = (event)=>{
-        setValues({ ...values, [event.target.name]: event.target.value });
-
-    };
+    
   
 return (
     <div style={{

@@ -4,7 +4,6 @@ import Register from './pages/Register';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import RootLayout from './layouts/RootLayout';
-import LoginLayout from './layouts/LoginLayout';
 import { createBrowserRouter,createRoutesFromElements,RouterProvider } from 'react-router-dom';
 import Billupload from './pages/Billupload';
 import Managerchat from './pages/Managerchat';
@@ -24,8 +23,20 @@ const router = createBrowserRouter(
       <Route path="/manager/approvebills" element={<Approve />}/>
       <Route path="/manager/paybills" element={<Pay />}/>
      </Route>
+
+
+     {/* <Route path="/" element={<RootLayout />}>
+      <Route index element={<Chat />} />
+      <Route path="/addbill" element={<Billupload />}/>
+      <Route path="/manager" element={<Managerchat />}/>
+      <Route path="/manager/approvebills" element={<Approve />}/>
+      <Route path="/manager/paybills" element={<Pay />}/>
+     </Route> */}
+
+
+
      <Route path="/home" element={<Homepage />}/>
-     <Route path="/register" element={<Register />} />
+     <Route path="/register" element={<Register1 />} />
       <Route path="/login" element={<Login />} />
       
     </>
