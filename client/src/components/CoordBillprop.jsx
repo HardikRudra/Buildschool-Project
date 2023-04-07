@@ -1,6 +1,7 @@
-import { Button, Card, CardHeader, Flex, VStack } from '@chakra-ui/react'
+import { Button, Card, CardHeader, Flex, VStack,FormControl, Input,Box } from '@chakra-ui/react'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom';
+import { useState, useEffect,useRef } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -79,11 +80,22 @@ async function updateStatustoPending(id){
 
       
 }
+// var date = window.location.href.indexOf("/manager/approvebills").
+const myRef = useRef(null);
+var date = myRef.current;
 
 const handleRefresh = () => {
   window.location.reload();
 };
-
+async function updateDate(id){
+  const res = await axios({
+    method: 'post',
+    url: 'http://localhost:5000/api/manager/approvebills/'+ id,
+    data: {
+      newDate:{date},
+    }
+  });
+}
 
 
 async function updateStatustoPaid(id){
@@ -130,18 +142,27 @@ async function updateStatustoPaid(id){
                   <div>Amount : {props.amount}</div> 
                  <div> Proof : {props.proof}</div> 
                  <div> Status : {props.status}</div> 
+                 {/* <div> Date : {props.date}</div> */}
+                 
               
                    
               </ModalBody>
               
     
               <ModalFooter>
+              <FormControl>
+              <Box>Estimated Date:</Box>
+              <Input ref={myRef} id="date" mb="6px" type='date'></Input>
               <Button colorScheme='blue'  mr={3} onClick={()=>{
                   updateStatustoPending(props.id); 
                   handleRefresh();
+                  updateDate(props.id);
+
                   }}>
                   Approve
                 </Button>
+              </FormControl>
+              
 
 
       

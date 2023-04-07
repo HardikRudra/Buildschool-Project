@@ -41,7 +41,9 @@ function Chat({team}) {
   useEffect(() => {
     axios.get('http://localhost:5000')
       .then(res => {
-        setBills(res.data);
+        const sortedData = res.data.sort((a, b) => -1);
+        setBills(sortedData);
+        // setBills(res.data);
       })
   }, []);
   console.log(bills);

@@ -32,7 +32,15 @@ const billSchema = new mongoose.Schema({
   teamname: {
     type:String,
     //default:"Saarang",
+  },
+  
+  date: {
+    type:Date,
+    default:"02-01-2023",
   }
+
+
+
   },
 );
 

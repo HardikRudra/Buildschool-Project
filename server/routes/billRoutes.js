@@ -1,4 +1,4 @@
-const { updateStatus } = require("../controllers/billsController");
+const { updateStatus,updateDate} = require("../controllers/billsController");
 const { addbill } = require("../controllers/billsController");
 const router = require("express").Router();
 
@@ -17,6 +17,7 @@ cloudinary.config({
 
 router.post("/addbill",addbill);
 router.put("/manager/approvebills/:id", updateStatus);
+router.post("/manager/approvebills/:id", updateDate);
 router.put("/manager/paybills/:id", updateStatus);
 
 module.exports = router;

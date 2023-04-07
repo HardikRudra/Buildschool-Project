@@ -10,6 +10,14 @@ module.exports.updateStatus = async(req,res) =>{
     });
 
 };
+module.exports.updateDate = async(req,res) =>{
+    const {newDate} = req.body;
+    console.log(newDate);
+    const bill = await billModel.findByIdAndUpdate(req.params.id,{
+        date:newDate,
+    });
+
+};
 
 
 
@@ -27,6 +35,7 @@ module.exports.addbill = async(req,res,next) =>{
             itemname,
             amount,
             proof,
+        
             
 
 
