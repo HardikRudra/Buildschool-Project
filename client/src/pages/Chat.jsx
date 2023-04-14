@@ -69,20 +69,20 @@ function Chat({team}) {
   <TabPanels>
     <TabPanel>
     {bills.filter(bills => bills.status == "queued").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status} id={group._id} />
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     </TabPanel>
     <TabPanel>
     {bills.filter(bills => bills.status == "pending").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status} id={group._id} />
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     {/* <CoordBills /> */}
     </TabPanel>
     <TabPanel>
     {bills.filter(bills => bills.status == "paid").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof=<img src={`data:image/jpeg;base64,${group.proof}`} /> status={group.status} id={group._id} />
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     {/* <CoordBills /> */}

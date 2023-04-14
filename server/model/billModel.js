@@ -1,4 +1,7 @@
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
 
 const billSchema = new mongoose.Schema({
   billname: {
@@ -21,7 +24,7 @@ const billSchema = new mongoose.Schema({
     unique: false,
   },
   proof: {
-    type:Buffer,
+    type:String,
     required: false,
     // unique: true,
   },
@@ -44,8 +47,15 @@ const billSchema = new mongoose.Schema({
   },
 );
 
+// export const MyModel = mongoose.model('MyModel', billSchema);
+
+
 
 
 
 
 module.exports = mongoose.model("Bills", billSchema);
+
+
+// im.png 
+// public/asset/

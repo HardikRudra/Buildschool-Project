@@ -9,7 +9,9 @@ function Teamheading() {
   
   
   return (
-    <Teamheading />
+    <Box bg="blue.200" h="64px">
+        <Text ml="20px" fontSize="25px" pt="7px" fontFamily="Lato" >Saarang</Text>
+      </Box>
   )
 }
 

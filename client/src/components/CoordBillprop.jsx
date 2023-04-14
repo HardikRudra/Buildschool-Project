@@ -11,10 +11,17 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
-  } from '@chakra-ui/react'
-  import ImageComponent from './ImageComponent'
-  import axios from 'axios'
+  } from '@chakra-ui/react';
+  import { Image } from 'cloudinary-react';
 
+  import axios from 'axios';
+  // import { Image } from 'cloudinary-react';
+
+import {pid} from '../pages/Billupload'
+
+
+  const fid = "https://res.cloudinary.com/dtpp08tmi/image/upload/v1681465983/" + pid + ".png";
+  console.log(fid);
   
 
 // function Billprop(props) {
@@ -27,9 +34,6 @@ import {
    
 //   )
 // }
-
-
-
 
 
   
@@ -55,7 +59,7 @@ function CoordBillprop(props) {
   //     })
   // }, []);
 
-
+  console.log(pid)
 async function updateStatustoPending(id){
   // axios.put('http://localhost:5000/manager/approvebills/'+ id, {
   //   body
@@ -82,20 +86,20 @@ async function updateStatustoPending(id){
 }
 // var date = window.location.href.indexOf("/manager/approvebills").
 const myRef = useRef(null);
-var date = myRef.current;
+
 
 const handleRefresh = () => {
   window.location.reload();
 };
-async function updateDate(id){
-  const res = await axios({
-    method: 'post',
-    url: 'http://localhost:5000/api/manager/approvebills/'+ id,
-    data: {
-      newDate:{date},
-    }
-  });
-}
+// async function updateDate(id){
+//   const res = await axios({
+//     method: 'post',
+//     url: 'http://localhost:5000/api/manager/approvebills/'+ id,
+//     data: {
+//       newDate:{date},
+//     }
+//   });
+// }
 
 
 async function updateStatustoPaid(id){
@@ -122,6 +126,10 @@ async function updateStatustoPaid(id){
 
 
 
+
+
+
+
     if(window.location.href.indexOf("/manager/approvebills")!==-1){
       return (
         <>
@@ -140,7 +148,7 @@ async function updateStatustoPaid(id){
              
                  <div>Item Name : {props.itemname} </div> 
                   <div>Amount : {props.amount}</div> 
-                 <div> Proof : {props.proof}</div> 
+                  <div>Proof: <Image cloudName="dtpp08tmi" publicId={props.proof} /> </div>
                  <div> Status : {props.status}</div> 
                  {/* <div> Date : {props.date}</div> */}
                  
@@ -152,11 +160,11 @@ async function updateStatustoPaid(id){
               <ModalFooter>
               <FormControl>
               <Box>Estimated Date:</Box>
-              <Input ref={myRef} id="date" mb="6px" type='date'></Input>
+              {/* <Input ref={myRef} id="date" mb="6px" type='date'></Input> */}
               <Button colorScheme='blue'  mr={3} onClick={()=>{
                   updateStatustoPending(props.id); 
                   handleRefresh();
-                  updateDate(props.id);
+                  // updateDate(props.id);
 
                   }}>
                   Approve
@@ -191,7 +199,7 @@ async function updateStatustoPaid(id){
            
                <div>Item Name : {props.itemname} </div> 
                 <div>Amount : {props.amount}</div> 
-               <div> Proof : {props.proof}</div> 
+                <div>Proof: <Image cloudName="dtpp08tmi" publicId={props.proof} /> </div>
                <div> Status : {props.status}</div> 
             
                  
@@ -235,7 +243,7 @@ async function updateStatustoPaid(id){
              
                  <div>Item Name : {props.itemname} </div> 
                   <div>Amount : {props.amount}</div> 
-                 <div> Proof : {props.proof}</div> 
+                  <div>Proof: <Image cloudName="dtpp08tmi" publicId={props.proof} /> </div>
                  <div> Status : {props.status}</div> 
               
                    

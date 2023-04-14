@@ -5,11 +5,22 @@ import Teamnames from './Teamnames';
 
 function createTeamNames(group){
   return(
+<>
+
+
+
+
+
+
       <Teamnames
           key={group.id}
           teamname={group.teamname}
 
       />
+</>
+
+
+    
   );
 }
 
