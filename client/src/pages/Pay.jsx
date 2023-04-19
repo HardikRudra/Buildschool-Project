@@ -17,10 +17,15 @@ function Pay() {
   console.log(bills);
 
 
+  const sortedBills = bills.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+
+
+
   return (
     <Box >
-      {bills.filter(bills => bills.status == "pending").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof}  status={group.status} id={group._id}/>
+      {sortedBills.filter(bills => bills.status == "pending").map(group => (
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof}  status={group.status} id={group._id} date={group.date}/>
     ))
   }
     </Box>

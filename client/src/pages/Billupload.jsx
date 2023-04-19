@@ -143,4 +143,4 @@ const updateproof = async (pid) => {
   )
 }
 
-export default Billupload
+export default Billupload;

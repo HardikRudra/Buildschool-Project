@@ -9,14 +9,14 @@ const billSchema = new mongoose.Schema({
     required: true,
     min: 3,
     max: 20,
-    // unique: true,
+    unique:false,
   },
   itemname: {
     type: String,
     required: true,
     min: 3,
     max: 20,
-    // unique: true,
+    unique:false,
   },
   amount: {
     type:Number,
@@ -26,7 +26,7 @@ const billSchema = new mongoose.Schema({
   proof: {
     type:String,
     required: false,
-    // unique: true,
+    unique:false,
   },
   status: {
     type: String,
@@ -38,8 +38,8 @@ const billSchema = new mongoose.Schema({
   },
   
   date: {
-    type:Date,
-    default:"02-01-2023",
+    type:String,
+    default:"",
   }
 
 

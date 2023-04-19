@@ -17,7 +17,7 @@ module.exports.updateDate = async(req,res) =>{
     const bill = await billModel.findByIdAndUpdate(req.params.id,{
         date:newDate,
     });
-
+    
 };
 
 
@@ -51,6 +51,22 @@ module.exports.updateBill = async (req, res) => {
       const result = await billModel.updateOne({ billname: bn }, { $set: { proof: newProof } });
       console.log(result);
       res.json({ message: 'Document updated successfully' , bn, newProof});
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+  
+
+  module.exports.updateBillDate = async (req, res) => {
+    const bn = req.body.billname;
+    const newDate = req.body.date;
+    // console.log(bn, newProof)
+  
+    try {
+      const result = await billModel.updateOne({ billname: bn }, { $set: { date: newDate } });
+      console.log(result);
+      res.json({ message: 'Document updated successfully' , bn, newDate});
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal server error' });

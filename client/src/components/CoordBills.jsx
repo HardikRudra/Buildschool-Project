@@ -16,7 +16,7 @@ import {Box, Heading} from '@chakra-ui/react'
 function createCoordBills(group) {
   return (
     <div>
-        <CoordBillprop  key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status}
+        <CoordBillprop  key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} date={group.date}
         ></CoordBillprop>
     </div>
   )

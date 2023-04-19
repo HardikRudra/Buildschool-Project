@@ -41,7 +41,7 @@ function Chat({team}) {
   useEffect(() => {
     axios.get('http://localhost:5000')
       .then(res => {
-        const sortedData = res.data.sort((a, b) => -1);
+        const sortedData = res.data.sort((a, b) => 1);
         setBills(sortedData);
         // setBills(res.data);
       })
@@ -68,14 +68,18 @@ function Chat({team}) {
 
   <TabPanels>
     <TabPanel>
-    {bills.filter(bills => bills.status == "queued").map(group => (
+    {bills.filter(bills => bills.status == "queued" ).map(group => (
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
+    ))
+  }
+  {bills.filter(bills => bills.status == "rejected" ).map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     </TabPanel>
     <TabPanel>
     {bills.filter(bills => bills.status == "pending").map(group => (
-      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
+      <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} date={group.date} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     {/* <CoordBills /> */}
