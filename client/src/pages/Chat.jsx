@@ -23,6 +23,9 @@ import CoordBillprop from '../components/CoordBillprop';
 function Chat({team}) {
   // const filterByStatus = (statusName) =>{
   //   bills.filter(item => item.status===statusName)
+  const customStyle={
+    bgColor:"blue.400",
+  }
   // } 
   
 
@@ -52,7 +55,7 @@ function Chat({team}) {
 
   return (
     <Box>
-      <Box h="630px" bg="white">
+      <Box h="630px" bg="">
    <Tabs >
   <TabList justifyContent={'space-around'}>
 
@@ -61,31 +64,31 @@ function Chat({team}) {
 
 ))} */}
 
-    <Tab w="150px" fontSize="17px" fontFamily="Lato">Queued</Tab>
-    <Tab w="150px" fontSize="17px" fontFamily="Lato">Pending</Tab>
-    <Tab w="150px" fontSize="17px" fontFamily="Lato">Done</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="">Queued</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="">Pending</Tab>
+    <Tab w="150px" fontSize="17px" fontFamily="">Done</Tab>
   </TabList>
 
   <TabPanels>
     <TabPanel>
-    {bills.filter(bills => bills.status == "queued" ).map(group => (
+    {bills.filter(bills => bills.status == "Queued" ).map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
-  {bills.filter(bills => bills.status == "rejected" ).map(group => (
+  {bills.filter(bills => bills.status == "Rejected" ).map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     </TabPanel>
     <TabPanel>
-    {bills.filter(bills => bills.status == "pending").map(group => (
+    {bills.filter(bills => bills.status == "Pending").map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} date={group.date} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
     {/* <CoordBills /> */}
     </TabPanel>
     <TabPanel>
-    {bills.filter(bills => bills.status == "paid").map(group => (
+    {bills.filter(bills => bills.status == "Paid").map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id} />
     ))
   }
@@ -94,7 +97,7 @@ function Chat({team}) {
   </TabPanels>
 </Tabs>
   </Box>
-  <Link to="/addbill"><Button  fontFamily="Lato" fontSize="17px" my={1} colorScheme="blue"   ml="67vw">Add Bill</Button></Link>
+  <Link to="/addbill"><Button  fontFamily="Lato" fontSize="17px" my={1} bgColor="#1363DF" _hover={customStyle} ml="67vw" textColor="white">Add Bill</Button></Link>
     </Box>
   
   );

@@ -14,14 +14,26 @@ function Teamnames(props) {
   //   )
   // }
   
-
+  function handleClick() {
+    // get the button element
+    const button = document.getElementById("myButton");
+  
+    // set the button background color to red
+    button.style.backgroundColor = "red";
+  }
 
 
 
   return (
-    <Card h={57} my={1} mx={1} bg="blue.100">
-      <Text fontSize="20px" pt="10px" pl="10px" fontFamily="Lato" >{props.teamname}</Text>
+    <div>
+ <Card h="40px"  mx={1} bg="" onClick={handleClick} id='myButton'>
+      <Text fontSize="20px" pt="10px" pl="10px" fontFamily=""  color="black" >Shaastra</Text>
     </Card>
+    <Card h="40px"  mx={1} bg="" onClick={handleClick} id='myButton'>
+      <Text fontSize="20px" pt="10px" pl="10px" fontFamily=""  color="black" >Shaastra</Text>
+    </Card>
+    </div>
+   
   )
 }
 

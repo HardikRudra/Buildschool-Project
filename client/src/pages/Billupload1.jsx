@@ -108,44 +108,32 @@ const updateproof = async (pid) => {
 };
 
   return (
-    <Container  pb="40px" px="50px" mt="50px" borderRadius="25px" border="1px solid black" style={{
-        boxShadow: '2px 2px 5px #656566',
-        width: "450px",
-        height: "500px",
-        }}>
+    <Container  pb="40px" px="50px" mt="50px" borderRadius="25px" border="1px solid black" style={{boxShadow: '2px 2px 5px #000000',}}>
     <Form action='' method='post' onSubmit={(event) => handleSubmit(event)}>
-    <FormControl isRequired mt="40px" mb="20px">
-        
-          <Input type="text" name="billname" placeholder='Bill Name' onChange={(e) => handleChange(e)}/>
+    <FormControl isRequired my="40px">
+         <FormLabel >Bill Name:</FormLabel>
+          <Input type="text" name="billname" placeholder='Enter Bill Name' onChange={(e) => handleChange(e)}/>
           
         </FormControl>
 
-        <FormControl isRequired mb="20px">
-          <Input type="text" name="itemname" placeholder='Item Name' onChange={(e) => handleChange(e)}/>
+        <FormControl isRequired mb="40px">
+          <FormLabel>Item name:</FormLabel>
+          <Input type="text" name="itemname" placeholder='Enter Item Name' onChange={(e) => handleChange(e)}/>
           
         </FormControl>
 
-        <FormControl isRequired mb="20px">
-         
-          <Input type="text" name="amount" placeholder='Amount (in Rs)' onChange={(e) => handleChange(e)}/>
+        <FormControl isRequired mb="40px">
+          <FormLabel>Amount:</FormLabel>
+          <Input type="text" name="amount" placeholder='Enter Amount' onChange={(e) => handleChange(e)}/>
           
         </FormControl>
 
-        <FormControl isRequired mb="20px">
-
-        <>
-            <div> 
-               <FormLabel style={{ marginLeft: "6px"}}>Proof:</FormLabel>
-            </div>
-            <div style={{marginLeft: "0px",}}> 
-            <Input border="0px" type="file" name="proof" onChange={(e) => {
+        <FormControl isRequired mb="40px">
+          <FormLabel>Proof:</FormLabel>
+          <Input border="0px" type="file" name="proof" onChange={(e) => {
             handleChange(e);
             setImageSelected(e.target.files[0]);
             }} />
-            </div>
-      </>
-     
-          
           
         </FormControl>
         <Button type='submit' onClick={uploadImage}>Submit</Button>

@@ -24,7 +24,7 @@ function Pay() {
 
   return (
     <Box >
-      {sortedBills.filter(bills => bills.status == "pending").map(group => (
+      {sortedBills.filter(bills => bills.status == "Pending").map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof}  status={group.status} id={group._id} date={group.date}/>
     ))
   }

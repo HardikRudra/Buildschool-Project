@@ -30,7 +30,7 @@ const billSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default:'queued',
+    default:'Queued',
   },
   teamname: {
     type:String,

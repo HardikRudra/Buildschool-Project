@@ -26,20 +26,6 @@ import { useNavigate } from 'react-router-dom';
 
   const fid = "https://res.cloudinary.com/dtpp08tmi/image/upload/v1681465983/" + pid + ".png";
   console.log(fid);
-  
-
-// function Billprop(props) {
-//   return (
-//  <Card my={2}>
-   
-//    <CardHeader>{props.billname}</CardHeader>
-
-//  </Card>
-   
-//   )
-// }
-
-
 
 
 
@@ -52,15 +38,6 @@ import { useNavigate } from 'react-router-dom';
 function CoordBillprop(props) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate=useNavigate();
-  //   const [bills, setBills] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000')
-  //     .then(res => {
-  //       setBills(res.data);
-  //     })
-  // }, []);
-
   
 
 
@@ -79,7 +56,7 @@ async function updateStatustoPending(id){
         url: 'http://localhost:5000/api/manager/approvebills/'+ id,
         data: {
             
-            newStatus: 'pending'
+            newStatus: 'Pending'
         }
     });
       
@@ -97,27 +74,11 @@ async function updateStatustoRejected(id){
         url: 'http://localhost:5000/api/manager/approvebills/'+ id,
         data: {
             
-            newStatus: 'rejected'
+            newStatus: 'Rejected'
         }
     });
       
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // var date = window.location.href.indexOf("/manager/approvebills");
@@ -141,45 +102,25 @@ async function updateDate(id,p2){
 
 
 
-// const updateDate = async (pid) => {
-//   const { billname,itemname,amount,proof,date} = values;
-//   const newProof = pid;
 
-//   try {
-//     const response = await fetch(`http://localhost:5000/api/updatebill`, {
-//       method: 'PATCH',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ proof: newProof , billname })
-//     });
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
 
 async function updateStatustoPaid(id){
-  // axios.put('http://localhost:5000/manager/approvebills/'+ id, {
-  //   body
-  // })
-      // .then(res => {
-      //    (res.data);
-      // })
-
       const res = await axios({
         method: 'put',
         url: 'http://localhost:5000/api/manager/paybills/'+ id,
         data: {
             
-            newStatus: 'paid'
+            newStatus: 'Paid'
         }
     });
       
 }
 
-
+const customStyle={
+  //bgColor:"blue.100",
+  boxShadow : "1px 0px 5px #656566",
+ 
+}
 
 
 
@@ -191,13 +132,26 @@ async function updateStatustoPaid(id){
     if(window.location.href.indexOf("/manager/approvebills")!==-1){
       return (
         <>
-           <Card bg="#D6E6F2" onClick={onOpen} my={2}>
+           <Card bg="" onClick={onOpen} my="2px" _hover={customStyle} >
      
-     <CardHeader fontFamily="Lato" fontSize="18px">{props.billname}</CardHeader>
+           <CardHeader fontFamily="" fontSize="18px">
+     <div>
+  <div style={{ float: "left" }}>{props.billname}</div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "300px",
+                 marginRight: "2px",
+          }}>
+          Rs. 
+          {props.amount}
+  </div>
+  <div style={{ clear: "both" }}></div>
+</div>
+    </CardHeader>
   
    </Card>
     
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Modal isOpen={isOpen} onClose={onClose} size="3xl" >
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>{props.billname}</ModalHeader>
@@ -250,28 +204,34 @@ async function updateStatustoPaid(id){
   else if(window.location.href.indexOf("/manager/paybills")!==-1){
     return (
       <>
-         <Card bg="#D6E6F2" onClick={onOpen} my={2}>
+         <Card  onClick={onOpen} my="2px"  _hover={customStyle}>
    
-   <CardHeader fontFamily="Lato" fontSize="18px">
-
-   {/* <GridItem>
-   {props.billname}
-   </GridItem>
-
-    <GridItem>
-    {props.date}
-    </GridItem> */}
-    <Grid templateColumns="repeat(2, 5fr)" gap="600px">
-      <Box  w="400px"> {props.billname}</Box>
-      <Box  mr="20px"> {props.date} </Box>
-    </Grid>
-  
-   </CardHeader>
+         <CardHeader fontFamily="" fontSize="18px">
+     <div>
+  <div style={{ float: "left" }}>{props.billname}</div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "300px",
+                 marginRight: "2px",
+          }}>
+          Rs. 
+          {props.amount}
+  </div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "1000px",
+                 marginRight: "2px",
+          }}>
+          {props.date}
+  </div>
+  <div style={{ clear: "both" }}></div>
+</div>
+    </CardHeader>
    {/* <CardFooter fontFamily="Lato" pr="2px"> {props.date}  </CardFooter> */}
 
  </Card>
   
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size="3xl" >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>{props.billname}</ModalHeader>
@@ -281,6 +241,7 @@ async function updateStatustoPaid(id){
                <div>Item Name : {props.itemname} </div> 
                 <div>Amount : {props.amount}</div> 
                 <div>Proof: <Image cloudName="dtpp08tmi" publicId={props.proof} /> </div>
+                <div>Upi ID: XYZ@upi</div>
                <div> Status : {props.status}</div> 
             
                  
@@ -303,16 +264,29 @@ async function updateStatustoPaid(id){
   }
 
 
-  else if(props.status==="rejected"){
+  else if(props.status==="Rejected"){
     return (
       <>
-         <Card bg="red.400" onClick={onOpen} my={2}>
+         <Card  onClick={onOpen}  my="2px" _hover={{ boxShadow: "1px 0px 5px red", }}>
    
-   <CardHeader fontFamily="Lato" fontSize="18px">{props.billname}</CardHeader>
+         <CardHeader fontFamily="" fontSize="18px" color="red">
+     <div>
+  <div style={{ float: "left" }}>{props.billname}</div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "300px",
+                 marginRight: "2px",
+          }}>
+          Rs. 
+          {props.amount}
+  </div>
+  <div style={{ clear: "both" }}></div>
+</div>
+    </CardHeader>
 
  </Card>
   
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size="3xl" >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>{props.billname}</ModalHeader>
@@ -345,21 +319,42 @@ async function updateStatustoPaid(id){
     else {
       return (
         <>
-           <Card bg="#D6E6F2" onClick={onOpen} my={2}>
+           <Card bg="" onClick={onOpen} my="2px" _hover={customStyle}>
      
-     <CardHeader fontFamily="Lato" fontSize="18px">{props.billname}</CardHeader>
+     <CardHeader fontFamily="" fontSize="18px">
+     <div >
+  <div style={{ float: "left" }}>{props.billname}</div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "300px",
+                 marginRight: "2px",
+          }}>
+          Rs. 
+          {props.amount}
+  </div>
+  <div  style={{ float: "left",
+                position: 'absolute',
+                left: "1000px",
+                 marginRight: "2px",
+          }}>
+          {props.date}
+  </div>
+  <div style={{ clear: "both" }}></div>
+  
+</div>
+    </CardHeader>
   
    </Card>
     
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Modal isOpen={isOpen} onClose={onClose} size="3xl" >
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent style={{height: "650px", }}>
               <ModalHeader>{props.billname}</ModalHeader>
               <ModalCloseButton />
-              <ModalBody>
+              <ModalBody >
              
                  <div>Item Name : {props.itemname} </div> 
-                  <div>Amount : {props.amount}</div> 
+                  <div>Amount :  {props.amount}</div> 
                   <div>Proof: <Image cloudName="dtpp08tmi" publicId={props.proof} /> </div>
                  <div> Status : {props.status}</div> 
               

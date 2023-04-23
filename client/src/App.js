@@ -12,13 +12,15 @@ import Pay from './pages/Pay';
 import Register1 from './pages/Register1';
 import Login1 from './pages/Login1';
 import Homepage from './pages/Homepage';
-
+import UB from './pages/Billupload';
+import { Card } from './pages/Card';
+import Profile from './pages/Profile';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
        <Route path="/" element={<RootLayout />}>
       <Route index element={<Chat />} />
-      <Route path="/addbill" element={<Billupload />}/>
+      <Route path="/addbill" element={<UB />}/>
       <Route path="/manager" element={<Managerchat />}/>
       <Route path="/manager/approvebills" element={<Approve />}/>
       <Route path="/manager/paybills" element={<Pay />}/>
@@ -36,9 +38,9 @@ const router = createBrowserRouter(
 
 
      <Route path="/home" element={<Homepage />}/>
-     <Route path="/register" element={<Register1 />} />
+     <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      
+      <Route path="/profile" element={<Profile />} />
     </>
    
   )

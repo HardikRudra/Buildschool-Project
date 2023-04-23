@@ -19,7 +19,7 @@ function Approve() {
 
   return (
     <Box >
-      {bills.filter(bills => bills.status == "queued").map(group => (
+      {bills.filter(bills => bills.status == "Queued").map(group => (
       <CoordBillprop key={group._id} billname= {group.billname} itemname = {group.itemname} amount = {group.amount} proof={group.proof} status={group.status} id={group._id}/>
     ))
   }

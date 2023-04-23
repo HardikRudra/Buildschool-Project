@@ -5,15 +5,10 @@ import {ToastContainer,toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { loginRoute } from '../utils/APIRoutes';
-import logo from "../assets/Logo.png";
+import logo from "../assets/Logoblack.png";
+import pic2 from "../assets/backgroundlogin.png"
+import BackgroundImageLoader from 'react-background-image-loader';
 
-function changeColor(e) {
-  e.target.style.backgroundColor ="#159895";
-}
-
-function restoreColor(e){
-  e.target.style.backgroundColor = "#769FCD";
-}
 
 export default function Login() {
   const navigate = useNavigate();
@@ -25,12 +20,16 @@ export default function Login() {
     draggable: true,
     theme: "dark",
   };
-  // useEffect(() => {
-  //   if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  
 
+ 
+  function changeColor(e) {
+    e.target.style.backgroundColor ="#6C9BCF";
+  }
+  
+  function restoreColor(e){
+    e.target.style.backgroundColor = "#6DA9E4";
+  }
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
@@ -69,47 +68,105 @@ export default function Login() {
     }
   };
   return (
-    <div>
+    <div
+    style={{ 
+            backgroundImage: `url("${pic2}")`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            height: '100vh', // set the height of the container
+            width: '100%', // set the width of the container
+            
+           
+    }}>
     <FormContainer style={{
-      transform: 'translateY(55%)',
-      boxShadow: '2px 2px 5px #000000',
-      width: "60%",
+
+      boxShadow: '2px 2px 4px #000000',
+      width: "400px",
+      height: "450px",
       margin: "auto",
+     // marginTop: "100px",
+     position: "relative",
+     top: "100px",
       borderRadius: "20px",
-      backgroundColor: "#B9DFEA"
+      zIndex:"+1",
+      backdropFilter:"blur(8px)",
+      backgroundColor: "#F6F1F1",
+      opacity: "1"
+    
     }}>
     <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
+
           <img src={logo} alt="Logo" style={{
-              width: "40%"
+              width: "250px",
+              marginBottom: "25px",
             }} />
           </div>
          
           <input
+          style={{
+            border: null,
+            outline: "none",
+            background:"none",
+          }}
             type="text"
+            className="bottom-border"
             placeholder="Username"
             name="username"
             onChange={(e) => handleChange(e)}
           />
           
-          
+          <hr style={{
+            marginTop: "0px",
+            position: "relative",
+            bottom: "10px",
+            border: "1px solid black",
+    
+            }} />
+
           <input
+          style={{
+            border: null,
+            outline: "none",
+            background:"none"
+          }}
+          className="bottom-border"
             type="password"
             placeholder="Password"
             name="password"
             onChange={(e) => handleChange(e)}
           />
-         
-          <button type="submit" onMouseOver={changeColor} onMouseLeave={restoreColor} style={{
-            backgroundColor:"#769FCD",
-            color: "white",
-            width: "20%",
-            margin: "auto",
-            paddingTop: "8px",
+            <hr style={{
+            marginTop: "0px",
+            position: "relative",
+            bottom: "10px",
+            border: "1px solid black",
+    
+            }} />
+
+
+
+          <button type="submit" className='boton' onMouseOver={changeColor} onMouseLeave={restoreColor} style={{
+           backgroundColor:"#6DA9E4",
+            color: "black",
+            width: "100px",
+            marginTop: "25px",
+            paddingTop: "4px",
+            marginLeft: "90px",
             paddingBottom:"8px",
-            borderRadius: "12px",}}>Login</button>
-          <span>
-            Don't have an account ? <Link to ="/register"> Register</Link>
+            border: '2px solid black',
+            borderRadius: "10px",}}>Login</button>
+          <span style={{
+            marginTop: "5px",
+              marginLeft: "25px",
+              fontWeight:500,
+          }}>
+            Don't have an account ? <Link to ="/register"
+            style={{
+              textDecoration: "none",
+              //borderBottom: "1px solid black",
+              color: "blue",
+            }}> Register</Link>
           </span>
         
         </form>
@@ -129,17 +186,19 @@ form{
     display:flex;
     flex-direction:column;
     gap:1rem;
-    width:60%;
+    width:70%;
     
     padding-top: 20px;
     padding-bottom: 20px;
     
 }
 
-input{
-  height: 50px;
-  box-shadow: 1px 1px 1px 2px black;
-  border-radius: 10px;
-  
-}`
+input::placeholder{
+  color: black;
+}
+button:hover{
+  background-color: #537FE7;
+}
+
+`
 ;
